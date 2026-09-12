@@ -170,18 +170,17 @@ node test/probe.js              # 结果写入 test/probe.txt
 | 分支 | 用途 | 品牌资源 |
 |---|---|---|
 | `main` | 开源发布版 | 不含。`brand/` 不提交，由 `.gitignore` 兜底 |
-| `kdd` | 内部版 | 含。`brand/` 里的商标图会提交，产物内联公司图标 |
+| `internal` | 内部版 | 含。`brand/` 里的商标图会提交，产物内联品牌图标 |
 
 **导出内部版**：
 
 ```bash
-git checkout kdd
-node src/build.js        # 生成带公司图标的 物料借还管理.html
+git checkout internal
+node src/build.js        # 生成带品牌图标的 物料借还管理.html
 ```
 
-`brand/` 只在 `kdd` 分支存在，所以**切回 `main` 时这个目录会消失、切到 `kdd` 时又出现**——
-这是 git 的正常行为，不是文件丢了。（`brand/` 里的图另有一份仓库外的备份，
-放在 `D:\WorkBuddyMemory\ZZH\_brand-kdd\`。）
+`brand/` 只在 `internal` 分支存在，所以**切回 `main` 时这个目录会消失、
+切到 `internal` 时又出现**——这是 git 的正常行为，不是文件丢了。
 
 内部版的实现方式：`src/template.html` 里把 `brand/icon.ico` 以 base64 直接写进
 `<link rel="icon">`，所以产物**仍然是单文件**，不依赖任何外部文件。
