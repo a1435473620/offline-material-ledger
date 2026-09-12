@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="物料借还管理 —— 单机离线版，数据保存在本机浏览器">
+<title>物料借还管理</title>
+<script>
+/* 主题在首屏渲染前就恢复，避免深色用户看到一闪而过的白底 */
+(function () {
+  try {
+    if (localStorage.getItem('wl-mgr-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) { /* 隐私模式下读不到就按浅色走 */ }
+})();
+</script>
+<style>
+/*__CSS__*/
+</style>
+</head>
+<body>
+
+<div class="app" id="app"></div>
+<div class="toasts" id="toasts"></div>
+
+<script>
+/*__CORE__*/
+</script>
+<script>
+/*__UI__*/
+</script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+OK    src/core.js
+OK    src/ui.js
+OK    src/build.js
+OK    产物 第1段 script (234 字符)
+OK    产物 第2段 script (34177 字符)
+OK    产物 第3段 script (88867 字符)
+
+包含 </html>      : true
+包含 id="app"     : true
+包含 id="toasts"  : true
+未替换的占位符    : false
+产物体积          : 169.3 KB
