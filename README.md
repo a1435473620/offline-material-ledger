@@ -165,13 +165,28 @@ node test/probe.js              # 结果写入 test/probe.txt
 
 ## 开源版与内部版
 
-仓库用两个分支区分：
+仓库用两个分支区分同一份代码的两种发布形态：
 
-- **`main`（开源版）**：不含任何品牌商标与内部信息，`brand/` 目录被 `.gitignore` 排除
-- **内部分支**：在 `main` 的基础上加入带商标的应用图标（favicon 等），仅内部使用
+| 分支 | 用途 | 品牌资源 |
+|---|---|---|
+| `main` | 开源发布版 | 不含。`brand/` 不提交，由 `.gitignore` 兜底 |
+| `kdd` | 内部版 | 含。`brand/` 里的商标图会提交，产物内联公司图标 |
 
-商标文件放在 `brand/`，开源分支不提交。如果你 fork 这个仓库，
-请把 `brand/` 换成自己的品牌资源，不要使用原作者的商标。
+**导出内部版**：
+
+```bash
+git checkout kdd
+node src/build.js        # 生成带公司图标的 物料借还管理.html
+```
+
+`brand/` 只在 `kdd` 分支存在，所以**切回 `main` 时这个目录会消失、切到 `kdd` 时又出现**——
+这是 git 的正常行为，不是文件丢了。（`brand/` 里的图另有一份仓库外的备份，
+放在 `D:\WorkBuddyMemory\ZZH\_brand-kdd\`。）
+
+内部版的实现方式：`src/template.html` 里把 `brand/icon.ico` 以 base64 直接写进
+`<link rel="icon">`，所以产物**仍然是单文件**，不依赖任何外部文件。
+
+> 如果你 fork 了这个仓库，请把 `brand/` 换成自己的品牌资源，不要使用原作者的商标。
 
 ---
 
